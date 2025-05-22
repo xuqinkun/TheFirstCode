@@ -1,6 +1,7 @@
 package com.xqk.helloworld;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FirstActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "FirstActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,8 +23,8 @@ public class FirstActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: init");
         Button btn = findViewById(R.id.btn1);
         btn.setOnClickListener(v -> {
-            Intent intent = new Intent("com.xqk.helloworld.ACTION_START");
-            intent.addCategory("com.xqk.helloworld.MY_CATEGORY");
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://www.baidu.com"));
             startActivity(intent);
         });
     }
