@@ -1,5 +1,6 @@
 package com.xqk.helloworld;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,8 +21,7 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.first_layout);
         Log.d(TAG, "onCreate: init");
         Button btn = findViewById(R.id.btn1);
-//        btn.setOnClickListener(v -> Toast.makeText(MainActivity.this, "You clicked btn1", Toast.LENGTH_LONG).show());
-        btn.setOnClickListener(v -> finish());
+        btn.setOnClickListener(v -> startActivity(new Intent(FirstActivity.this, SecondActivity.class)));
     }
 
     @Override
