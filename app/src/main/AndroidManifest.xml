@@ -18,6 +18,7 @@
             <intent-filter>
                 <action android:name="com.xqk.helloworld.ACTION_START"/>
                 <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.xqk.helloworld.MY_CATEGORY"/>
             </intent-filter>
         </activity>
         <activity

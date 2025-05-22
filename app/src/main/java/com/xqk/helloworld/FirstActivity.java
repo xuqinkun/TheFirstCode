@@ -21,7 +21,11 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.first_layout);
         Log.d(TAG, "onCreate: init");
         Button btn = findViewById(R.id.btn1);
-        btn.setOnClickListener(v -> startActivity(new Intent("com.xqk.helloworld.ACTION_START")));
+        btn.setOnClickListener(v -> {
+            Intent intent = new Intent("com.xqk.helloworld.ACTION_START");
+            intent.addCategory("com.xqk.helloworld.MY_CATEGORY");
+            startActivity(intent);
+        });
     }
 
     @Override
