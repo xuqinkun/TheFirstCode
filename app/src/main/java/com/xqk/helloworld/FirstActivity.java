@@ -23,8 +23,8 @@ public class FirstActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: init");
         Button btn = findViewById(R.id.btn1);
         btn.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:10086"));
+            Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+            intent.putExtra("data", "hello");
             startActivity(intent);
         });
     }
