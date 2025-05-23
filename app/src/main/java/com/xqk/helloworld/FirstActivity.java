@@ -1,7 +1,6 @@
 package com.xqk.helloworld;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -24,8 +23,8 @@ public class FirstActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.btn1);
         btn.setOnClickListener(v -> {
             Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-            intent.putExtra("data", "hello");
-            startActivity(intent);
+
+            startActivityForResult(intent, 1);
         });
     }
 
@@ -44,5 +43,19 @@ public class FirstActivity extends AppCompatActivity {
             Toast.makeText(FirstActivity.this, "You clicked remove item", Toast.LENGTH_SHORT).show();
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.d(TAG, "onResult");
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data == null)
+            return;
+        if (resultCode == RESULT_OK) {
+            String ret = data.getStringExtra("data_return");
+            if (ret != null) {
+                Log.d(TAG, ret + ":" + requestCode);
+            }
+        }
     }
 }
