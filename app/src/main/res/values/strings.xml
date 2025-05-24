@@ -48,4 +48,6 @@
     </string>
     <string name="button3">button3</string>
     <string name="button">button</string>
+    <string name="tip">This is a normal activity</string>
+    <string name="dialog_info">This is a dialog activity</string>
 </resources>
