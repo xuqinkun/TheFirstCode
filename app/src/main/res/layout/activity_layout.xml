@@ -3,22 +3,28 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="Type something"/>
     <Button
         android:id="@+id/button3_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button1"
+        android:text="send"
         android:layout_gravity="top"/>
-    <Button
-        android:id="@+id/button3_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button2"
-        android:layout_gravity="center_vertical"/>
-    <Button
-        android:id="@+id/button3_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button3"
-        android:layout_gravity="bottom"/>
+<!--    <Button-->
+<!--        android:id="@+id/button3_2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Button2"-->
+<!--        android:layout_gravity="center_vertical"/>-->
+<!--    <Button-->
+<!--        android:id="@+id/button3_3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Button3"-->
+<!--        android:layout_gravity="bottom"/>-->
 </LinearLayout>
