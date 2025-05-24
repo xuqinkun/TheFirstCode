@@ -9,6 +9,6 @@ public class LayoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.frame_layout);
+        setContentView(R.layout.percent_frame_layout);
     }
 }
