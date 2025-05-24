@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.chapter03.R;
+import com.android.main.R;
 
 public class NormalActivity extends AppCompatActivity {
 

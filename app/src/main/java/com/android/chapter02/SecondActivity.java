@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import com.android.chapter03.R;
+import com.android.main.R;
 
 
 public class SecondActivity extends BaseActivity {

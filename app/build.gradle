@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.android.chapter03'
+    namespace 'com.android.main'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.android.chapter03"
+        applicationId "com.android.main"
         minSdk 21
         targetSdk 35
         versionCode 1

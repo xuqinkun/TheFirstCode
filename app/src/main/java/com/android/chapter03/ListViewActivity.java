@@ -6,6 +6,8 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.main.R;
+
 public class ListViewActivity extends AppCompatActivity {
 
         private String[] data = { "Apple", "Banana", "Orange", "Watermelon",

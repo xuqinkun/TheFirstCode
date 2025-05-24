@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.android.main.R;
+
 public class TitleLayout extends LinearLayout {
     public TitleLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);

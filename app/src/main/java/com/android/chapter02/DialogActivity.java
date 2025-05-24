@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.chapter03.R;
+import com.android.main.R;
 
 public class DialogActivity extends AppCompatActivity {
 
