@@ -11,8 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import com.android.main.R;
 
+import lombok.Getter;
 
+@Getter
 public class RightFragment extends Fragment {
+    String data = "aa";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
