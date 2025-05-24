@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_layout);
         Button button = findViewById(R.id.button_replace);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.right_layout, new RightFragment()).commit();
         button.setOnClickListener(v -> {
             if (isAnother) {
                 replaceFragment(new RightFragment());
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.right_layout, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 }
