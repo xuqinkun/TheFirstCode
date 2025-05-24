@@ -40,9 +40,9 @@ dependencies {
     implementation libs.percentlayout
 
     compileOnly libs.lombok.v11832
-    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor libs.lombok.v11832
 
     testCompileOnly libs.lombok.v11832
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+    testAnnotationProcessor libs.lombok.v11832
 
 }
