@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends BaseActivity {
     private static final String TAG = "SecondActivity";
 
     @Override
