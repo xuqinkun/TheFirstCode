@@ -119,7 +119,7 @@ Activity类中定义了7个回调方法，覆盖了活动生命周期的每一�
 <div style="text-align: center">
   <figure>
     <img src="imgs/2-23.png" alt="活动的生命周期" style="margin: 0 auto">
-    <figcaption style="font-weight: bold; margin-top: 8px">活动的生命周期</figcaption>
+    <figcaption style="font-weight: bold; margin-top: 8px">图2-23 活动的生命周期</figcaption>
   </figure>
 </div>
 
@@ -135,3 +135,10 @@ standard是活动默认的启动模式，在不进行显式指定的情况下，
 
 ### 2.5.4 singleInstance
 不同于以上3种启动模式，指定为singleInstance模式的活动会启用一个新的返回栈来管理这个活动（其实如果singleTask模式指定了不同的taskAffinity，也会启动一个新的返回栈）。
+
+<div style="text-align: center">
+  <figure>
+    <img src="imgs/2-31.png" alt="活动的生命周期" style="margin: 0 auto">
+    <figcaption style="font-weight: bold; margin-top: 8px">图2-31 singleInstance模式示意图</figcaption>
+  </figure>
+</div>
