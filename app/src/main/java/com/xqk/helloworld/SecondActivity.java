@@ -17,21 +17,18 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.second_layout);
         Button btn = findViewById(R.id.btn2);
         btn.setOnClickListener(v -> {
-            Intent intent = new Intent();
-            intent.putExtra("data_return", "Hello FirstActivity");
-            setResult(RESULT_OK, intent);
-            finish();
+            startActivity(new Intent(SecondActivity.this, FirstActivity.class));
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        Log.d(TAG, "back");
-        Intent intent = new Intent();
-        intent.putExtra("data_return", "Hello FirstActivity");
-        setResult(RESULT_OK, intent);
-        finish();
-        Log.d(TAG, "finish");
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        Log.d(TAG, "back");
+//        Intent intent = new Intent();
+//        intent.putExtra("data_return", "Hello FirstActivity");
+//        setResult(RESULT_OK, intent);
+//        finish();
+//        Log.d(TAG, "finish");
+//        super.onBackPressed();
+//    }
 }
