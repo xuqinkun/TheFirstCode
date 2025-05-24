@@ -19,12 +19,12 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_layout);
-        Log.d(TAG, "onCreate: init");
+        Log.d(TAG, this.toString());
         Button btn = findViewById(R.id.btn1);
         btn.setOnClickListener(v -> {
-            Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+            Intent intent = new Intent(FirstActivity.this, FirstActivity.class);
 
-            startActivityForResult(intent, 1);
+            startActivity(intent);
         });
     }
 
