@@ -21,15 +21,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.image_view);
         ProgressBar progressBar = findViewById(R.id.progress_bar);
         btn.setOnClickListener(v -> {
-            String string = text.getText().toString();
-            Toast.makeText(MainActivity.this, string, Toast.LENGTH_SHORT).show();
-            imageView.setImageResource(R.drawable.img_2);
-            if (progressBar.getVisibility() == ProgressBar.GONE) {
-                progressBar.setVisibility(ProgressBar.VISIBLE);
-            }
-            else{
-                progressBar.setVisibility(ProgressBar.GONE);
-            }
+            progressBar.setProgress(progressBar.getProgress() + 10);
         });
     }
 }
