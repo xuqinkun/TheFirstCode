@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         startDialog.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, DialogActivity.class));
         });
+        if (savedInstanceState != null) {
+            Log.d(TAG, "onCreate: " + savedInstanceState.getString("key"));
+        } else {
+            Log.d(TAG, "onCreate: nothing");
+        }
     }
 
     @Override
@@ -45,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.d(TAG, "onStop");
+        finish();
     }
 
     @Override
@@ -63,5 +70,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Log.d(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState");
+        outState.putString("key", "Don't forgive me");
     }
 }

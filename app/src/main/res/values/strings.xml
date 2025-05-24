@@ -50,4 +50,5 @@
     <string name="button">button</string>
     <string name="tip">This is a normal activity</string>
     <string name="dialog_info">This is a dialog activity</string>
+    <string name="btn_back">btn_back</string>
 </resources>
