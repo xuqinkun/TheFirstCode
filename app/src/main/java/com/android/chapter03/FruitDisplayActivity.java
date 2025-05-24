@@ -1,7 +1,10 @@
 package com.android.chapter03;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +23,14 @@ public class FruitDisplayActivity extends AppCompatActivity {
         FruitAdapter adapter = new FruitAdapter(FruitDisplayActivity.this, R.layout.fruit_item, fruitList);
         ListView listView = findViewById(R.id.list_view);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Fruit fruit = fruitList.get(position);
+                Toast.makeText(FruitDisplayActivity.this,
+                        fruit.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
         private void initFruits() {
             for (int i = 0; i < 2; i++) {
