@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.xqk.helloworld'
+    namespace 'com.android.chapter03'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.xqk.helloworld"
+        applicationId "com.android.chapter03"
         minSdk 21
         targetSdk 35
         versionCode 1

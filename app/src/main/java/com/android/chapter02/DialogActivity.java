@@ -1,8 +1,10 @@
-package com.xqk.helloworld;
+package com.android.chapter02;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.chapter03.R;
 
 public class DialogActivity extends AppCompatActivity {
 

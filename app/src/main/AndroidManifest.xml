@@ -13,26 +13,36 @@
         android:theme="@style/Theme.HelloWorld"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="com.android.chapter03.MainActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
-            android:name=".NormalActivity"
+            android:name="com.android.chapter02.MainActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name="com.android.chapter02.NormalActivity"
             android:exported="false" />
         <activity
-            android:name=".DialogActivity"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
+            android:name="com.android.chapter02.DialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
-            android:name=".ThirdActivity"
+            android:name="com.android.chapter02.ThirdActivity"
             android:exported="true"
             android:label="ThirdActivity"
             android:theme="@style/Theme.HelloWorld">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -40,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SecondActivity"
+            android:name="com.android.chapter02.SecondActivity"
             android:exported="true"
             android:label="SecondActivity"
             android:launchMode="singleInstance">
@@ -52,14 +62,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FirstActivity"
+            android:name="com.android.chapter02.FirstActivity"
             android:exported="true"
-            android:launchMode="singleTask"
-            android:label="First Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="First Activity"
+            android:launchMode="singleTask">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 

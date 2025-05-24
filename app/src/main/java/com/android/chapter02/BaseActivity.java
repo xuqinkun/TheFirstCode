@@ -1,4 +1,4 @@
-package com.xqk.helloworld;
+package com.android.chapter02;
 
 import android.os.Bundle;
 import android.util.Log;

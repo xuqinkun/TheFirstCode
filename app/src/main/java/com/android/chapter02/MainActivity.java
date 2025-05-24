@@ -1,16 +1,13 @@
-package com.xqk.helloworld;
+package com.android.chapter02;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import com.android.chapter03.R;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";

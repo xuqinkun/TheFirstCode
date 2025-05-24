@@ -1,4 +1,4 @@
-package com.xqk.helloworld;
+package com.android.chapter02;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
-
+import com.android.chapter03.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

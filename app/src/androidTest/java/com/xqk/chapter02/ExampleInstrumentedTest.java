@@ -1,4 +1,4 @@
-package com.xqk.helloworld;
+package com.xqk.chapter02;
 
 import android.content.Context;
 

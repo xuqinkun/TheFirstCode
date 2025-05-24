@@ -1,8 +1,9 @@
-package com.xqk.helloworld;
+package com.android.chapter02;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import com.android.chapter03.R;
 
 public class ThirdActivity extends BaseActivity {
     private static final String TAG = "ThirdActivity";

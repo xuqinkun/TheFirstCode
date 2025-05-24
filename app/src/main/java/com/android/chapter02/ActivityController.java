@@ -1,7 +1,6 @@
-package com.xqk.helloworld;
+package com.android.chapter02;
 
 import android.app.Activity;
-import android.os.Process;
 
 import java.util.ArrayList;
 import java.util.List;
