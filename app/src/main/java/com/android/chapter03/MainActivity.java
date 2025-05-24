@@ -1,5 +1,6 @@
 package com.android.chapter03;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,18 +23,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button btn = findViewById(R.id.button);
         btn.setOnClickListener(v -> {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-            dialog.setTitle("This is a dialog");
-            dialog.setMessage("FBI WARNING!");
-            dialog.setCancelable(false);
-            dialog.setPositiveButton("OK", (dialog1, which) -> {
-                Log.d(TAG, "It's ok");
-            });
-            dialog.setNegativeButton("Cancel", (dialog1, which) -> {
-                Log.d(TAG, "It's canceled");
-            });
-
+            ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+            dialog.setTitle("This is a ProgressDialog");
+            dialog.setMessage("Loading...");
+            dialog.setCancelable(true);
             dialog.show();
+            new Thread(()->{
+                try {
+                    Thread.sleep(3000);
+                    dialog.dismiss();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }).start();
         });
     }
 }
