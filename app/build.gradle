@@ -38,4 +38,11 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     implementation libs.percentlayout
+
+    compileOnly libs.lombok.v11832
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+    testCompileOnly libs.lombok.v11832
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+
 }
