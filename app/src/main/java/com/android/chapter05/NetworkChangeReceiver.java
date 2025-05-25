@@ -13,7 +13,7 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = manager.getActiveNetworkInfo();
-        boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
+        boolean isConnected = networkInfo != null && networkInfo.isAvailable();
         Toast.makeText(context, "Network changes, connected:" + isConnected, Toast.LENGTH_SHORT).show();
     }
 }
