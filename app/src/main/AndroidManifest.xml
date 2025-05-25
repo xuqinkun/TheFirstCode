@@ -20,6 +20,7 @@
              <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>
         </activity>
+        <activity android:name="com.android.chapter04.NewsContentActivity" android:exported="true"/>
         <activity
             android:name="com.android.chapter02.MainActivity"
             android:exported="true">
