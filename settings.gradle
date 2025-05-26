@@ -17,3 +17,4 @@ pluginManagement {
 
 rootProject.name = "TheFirstCode"
 include ':app'
+include ':broadcastreceiver'
