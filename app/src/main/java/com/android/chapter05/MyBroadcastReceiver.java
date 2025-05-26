@@ -12,6 +12,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.d(TAG, "onReceive");
-        Toast.makeText(context, "静态注册：received in MyBroadcastReceiver", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "received in MyBroadcastReceiver", Toast.LENGTH_SHORT).show();
     }
 }
