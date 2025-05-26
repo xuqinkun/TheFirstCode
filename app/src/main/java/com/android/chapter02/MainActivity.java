@@ -2,11 +2,10 @@ package com.android.chapter02;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import com.android.main.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
         setContentView(R.layout.main_layout);
-        Button startNormal = findViewById(R.id.start_normal);
-        Button startDialog = findViewById(R.id.start_dialog);
+        Button startNormal = (Button) findViewById(R.id.start_normal);
+        Button startDialog = (Button) findViewById(R.id.start_dialog);
         startNormal.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, NormalActivity.class));
         });
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
+    protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Log.d(TAG, "onSaveInstanceState");
         outState.putString("key", "Don't forgive me");

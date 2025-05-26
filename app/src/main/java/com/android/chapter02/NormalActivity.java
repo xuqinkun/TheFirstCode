@@ -2,9 +2,8 @@ package com.android.chapter02;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.main.R;
 
@@ -14,7 +13,7 @@ public class NormalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.normal_layout);
-        Button btn = findViewById(R.id.btn_back);
+        Button btn = (Button) findViewById(R.id.btn_back);
         btn.setOnClickListener(v -> {
             startActivity(new Intent(NormalActivity.this, MainActivity.class));
         });

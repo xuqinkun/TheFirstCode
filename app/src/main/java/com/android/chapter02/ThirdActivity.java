@@ -13,7 +13,7 @@ public class ThirdActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "Task id is " + getTaskId());
         setContentView(R.layout.third_layout);
-        Button btn = findViewById(R.id.btn3);
+        Button btn = (Button) findViewById(R.id.btn3);
         btn.setOnClickListener(v -> {
             ActivityController.finishAll();
         });

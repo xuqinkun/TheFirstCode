@@ -8,16 +8,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 
 import com.android.main.R;
 
 public class TitleLayout extends LinearLayout {
-    public TitleLayout(Context context, @Nullable AttributeSet attrs) {
+    public TitleLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.title, this);
-        Button backBtn = findViewById(R.id.title_back);
-        Button editBtn = findViewById(R.id.title_edit);
+        Button backBtn = (Button) findViewById(R.id.title_back);
+        Button editBtn = (Button) findViewById(R.id.title_edit);
         backBtn.setOnClickListener(v -> {
             ((Activity)getContext()).finish();
         });

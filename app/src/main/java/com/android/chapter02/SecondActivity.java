@@ -15,7 +15,7 @@ public class SecondActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "Task id is " + getTaskId());
         setContentView(R.layout.second_layout);
-        Button btn = findViewById(R.id.btn2);
+        Button btn = (Button) findViewById(R.id.btn2);
         btn.setOnClickListener(v -> {
             startActivity(new Intent(SecondActivity.this, ThirdActivity.class));
         });

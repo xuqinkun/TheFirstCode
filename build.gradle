@@ -1,4 +1,20 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-plugins {
-alias(libs.plugins.android.application) apply false
+buildscript {
+    repositories {
+        google()          // 必须
+        mavenCentral()    // 必须
+        maven { url 'https://maven.aliyun.com/repository/public' }  // 国内加速
+    }
+    dependencies {
+        // 使用与 Gradle 6.9.4 兼容的 Android Gradle 插件版本
+        classpath 'com.android.tools.build:gradle:4.2.2'  // 适用于 Gradle 6.7.1+
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/public' }  // 国内镜像
+        google()
+        mavenCentral()
+    }
 }

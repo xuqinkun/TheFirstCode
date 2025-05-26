@@ -2,9 +2,8 @@ package com.android.chapter03;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.main.R;
 
@@ -16,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn = findViewById(R.id.button);
+        Button btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(v -> {
             ProgressDialog dialog = new ProgressDialog(MainActivity.this);
             dialog.setTitle("This is a ProgressDialog");

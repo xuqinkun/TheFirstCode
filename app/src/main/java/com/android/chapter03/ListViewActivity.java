@@ -1,10 +1,10 @@
 package com.android.chapter03;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.main.R;
 
@@ -20,7 +20,7 @@ public class ListViewActivity extends AppCompatActivity {
             setContentView(R.layout.listview_layout);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(
                     ListViewActivity.this, android.R.layout.simple_list_item_1, data);
-            ListView listView = findViewById(R.id.list_view);
+            ListView listView = (ListView) findViewById(R.id.list_view);
             listView.setAdapter(adapter);
     }
 }

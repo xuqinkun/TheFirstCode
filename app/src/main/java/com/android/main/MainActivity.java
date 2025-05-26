@@ -1,30 +1,25 @@
 package com.android.main;
 
-import android.content.IntentFilter;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Button;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.android.chapter05.NetworkChangeReceiver;
 
 public class MainActivity extends AppCompatActivity {
-    private IntentFilter intentFilter;
-    private NetworkChangeReceiver networkChangeReceiver;
+    private static final String TAG = "MainActivity";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blank_layout);
-        intentFilter = new IntentFilter();
-        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-        networkChangeReceiver = new NetworkChangeReceiver();
-        registerReceiver(networkChangeReceiver, intentFilter);
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(v -> {
+            Log.d(TAG, "onCreate: send broadcast");
+            Intent intent = new Intent("android.intent.action.MY_BROADCAST");
+            sendBroadcast(intent);
+        });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(networkChangeReceiver);
-    }
 }

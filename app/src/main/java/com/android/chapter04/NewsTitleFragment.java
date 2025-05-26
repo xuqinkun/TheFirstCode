@@ -1,16 +1,13 @@
 package com.android.chapter04;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.main.R;
 
@@ -21,11 +18,11 @@ import java.util.Random;
 public class NewsTitleFragment extends Fragment {
     private boolean isTwoPane;
 
-    @Nullable
+    
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.news_title_frag, container, false);
-        RecyclerView newsTitleContainer = view.findViewById(R.id.news_title_container);
+        RecyclerView newsTitleContainer = (RecyclerView) view.findViewById(R.id.news_title_container);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         newsTitleContainer.setLayoutManager(layoutManager);
         newsTitleContainer.setAdapter(new NewsAdapter(getNews()));
@@ -54,7 +51,7 @@ public class NewsTitleFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated( Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getActivity().findViewById(R.id.news_content_layout) != null) {
             isTwoPane = true;
@@ -70,9 +67,8 @@ public class NewsTitleFragment extends Fragment {
             this.newsList = newsList;
         }
 
-        @NonNull
         @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item, parent, false);
             final ViewHolder viewHolder = new ViewHolder(view);
             view.setOnClickListener(v -> {
@@ -89,7 +85,7 @@ public class NewsTitleFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        public void onBindViewHolder(ViewHolder holder, int position) {
             News news = newsList.get(position);
             holder.newsTitle.setText(news.getTitle());
         }
@@ -102,9 +98,9 @@ public class NewsTitleFragment extends Fragment {
         class ViewHolder extends RecyclerView.ViewHolder {
             TextView newsTitle;
 
-            public ViewHolder(@NonNull View view) {
+            public ViewHolder(View view) {
                 super(view);
-                newsTitle = view.findViewById(R.id.news_title);
+                newsTitle = (TextView) view.findViewById(R.id.news_title);
             }
         }
     }

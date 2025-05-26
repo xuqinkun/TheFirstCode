@@ -1,14 +1,12 @@
 package com.android.chapter03;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.main.R;
 
@@ -24,8 +22,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         public ViewHolder(View view) {
             super(view);
             fruitView = view;
-            fruitImage = view.findViewById(R.id.fruit_image);
-            fruitName = view.findViewById(R.id.fruit_name);
+            fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
+            fruitName = (TextView) view.findViewById(R.id.fruit_name);
         }
     }
 
@@ -33,9 +31,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         this.fruitList = fruitList;
     }
 
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         holder.fruitView.setOnClickListener(v -> {
@@ -52,7 +49,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         Fruit fruit = fruitList.get(position);
         holder.fruitImage.setImageResource(fruit.getImageId());
         holder.fruitName.setText(fruit.getName());

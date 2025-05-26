@@ -8,18 +8,16 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 import com.android.main.R;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class FirstActivity extends BaseActivity {
     private static final String TAG = "FirstActivity";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_layout);
         Log.d(TAG, "Task id is " + getTaskId());
-        Button btn = findViewById(R.id.btn1);
+        Button btn = (Button) findViewById(R.id.btn1);
         btn.setOnClickListener(v -> {
             Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
             startActivity(intent);
@@ -33,7 +31,7 @@ public class FirstActivity extends BaseActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.add_item) {
             Toast.makeText(FirstActivity.this, "You clicked add item", Toast.LENGTH_SHORT).show();
@@ -44,7 +42,7 @@ public class FirstActivity extends BaseActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d(TAG, "onResult");
         super.onActivityResult(requestCode, resultCode, data);
         if (data == null)
