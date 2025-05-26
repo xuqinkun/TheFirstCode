@@ -142,3 +142,8 @@ standard是活动默认的启动模式，在不进行显式指定的情况下，
     <figcaption style="font-weight: bold; margin-top: 8px">图2-31 singleInstance模式示意图</figcaption>
   </figure>
 </div>
+
+本地广播的几点优势\
+❑ 可以明确地知道正在发送的广播不会离开我们的程序，因此不必担心机密数据泄漏。\
+❑ 其他的程序无法将广播发送到我们程序的内部，因此不需要担心会有安全漏洞的隐患。\
+❑ 发送本地广播比发送系统全局广播将会更加高效。

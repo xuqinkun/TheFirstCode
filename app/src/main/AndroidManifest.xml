@@ -20,7 +20,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MY_BROADCAST" />
+                <action android:name="android.intent.action.LOCAL_BROADCAST" />
             </intent-filter>
         </receiver>
         <receiver
