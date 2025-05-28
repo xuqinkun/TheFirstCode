@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld"
         tools:targetApi="25">
+
         <receiver
             android:name="com.android.chapter05.MyBroadcastReceiver"
             android:enabled="true"
@@ -33,10 +34,11 @@
         </receiver>
 
         <activity
-            android:name="com.android.chapter06.MainActivity"
+            android:name="com.android.chapter06.SharedPreferenceActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -82,8 +84,7 @@
             android:name="com.android.chapter02.FirstActivity"
             android:exported="true"
             android:label="First Activity"
-            android:launchMode="singleTask">
-        </activity>
+            android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>
