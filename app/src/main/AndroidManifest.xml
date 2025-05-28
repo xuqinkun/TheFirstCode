@@ -34,11 +34,10 @@
         </receiver>
 
         <activity
-            android:name="com.android.chapter06.SharedPreferenceActivity"
+            android:name="com.android.chapter06.DatabaseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
