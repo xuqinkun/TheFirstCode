@@ -1,6 +1,7 @@
 package com.android.chapter06;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -51,6 +52,32 @@ public class DatabaseActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put("price", 10.99);
             db.update("Book", values, "name = ?", new String[]{"The Da Vinci Code"});
+            ToastUtil.shortInfo(this, "Update data succeed");
+        });
+        Button deleteBtn = (Button) findViewById(R.id.delete_database);
+        deleteBtn.setOnClickListener(v -> {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            db.delete("Book", "pages > ?", new String[]{"500"});
+            ToastUtil.shortInfo(this, "Delete data succeed");
+        });
+        Button queryBtn = (Button) findViewById(R.id.query_database);
+        queryBtn.setOnClickListener(v -> {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Cursor cursor = db.query("Book", null, null,
+                    null, null, null, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    String name = cursor.getString(cursor.getColumnIndex("name"));
+                    String author = cursor.getString(cursor.getColumnIndex("author"));
+                    int pages = cursor.getInt(cursor.getColumnIndex("pages"));
+                    double price = cursor.getDouble(cursor.getColumnIndex("price"));
+                    Log.d(TAG, "book name is " + name);
+                    Log.d(TAG, "book author is " + author);
+                    Log.d(TAG, "book pages is " + pages);
+                    Log.d(TAG, "book price is " + price);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
         });
     }
 }
