@@ -8,4 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create database"/>
+    <Button
+        android:id="@+id/add_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add database"/>
+    <Button
+        android:id="@+id/update_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="update database"/>
 </LinearLayout>
