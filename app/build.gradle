@@ -44,4 +44,5 @@ dependencies {
     implementation 'com.android.support:percent:25.4.0'
     implementation 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    implementation 'org.litepal.android:core:1.6.1'
 }

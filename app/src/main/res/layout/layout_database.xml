@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
+        android:id="@+id/drop_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="drop database"/>
+    <Button
         android:id="@+id/create_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

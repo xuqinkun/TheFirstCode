@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="Book"/>
+    <version value="2"/>
+    <list>
+        <mapping class="com.android.chapter06.litepal.Book"/>
+        <mapping class="com.android.chapter06.litepal.Category"/>
+    </list>
+</litepal>
