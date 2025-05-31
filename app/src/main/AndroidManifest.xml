@@ -4,6 +4,7 @@
     package="com.android.main">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
@@ -18,8 +19,8 @@
         tools:targetApi="25">
 
         <activity
-            android:label="Litepal"
-            android:name="com.android.chapter06.litepal.LitePalActivity"
+            android:label="Chapter07"
+            android:name="com.android.chapter07.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
