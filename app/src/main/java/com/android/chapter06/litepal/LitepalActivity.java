@@ -40,10 +40,8 @@ public class LitepalActivity extends AppCompatActivity {
         Button updateBtn = (Button) findViewById(R.id.update_database);
         updateBtn.setOnClickListener(v -> {
             Book book = new Book();
-
-            book.setPrice(14.95);
-            book.setPress("Anchor");
-            book.updateAll("name = ? and author = ?", "The Lost Symbol", "Dan Brown");
+            book.setToDefault("pages");
+            book.updateAll();
             ToastUtil.shortInfo(this, "Update data succeed");
         });
     }
