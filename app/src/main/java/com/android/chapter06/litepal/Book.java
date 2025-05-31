@@ -1,11 +1,13 @@
 package com.android.chapter06.litepal;
 
+import org.litepal.crud.DataSupport;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-public class Book {
+public class Book extends DataSupport {
     private int id;
 
     private String author;
