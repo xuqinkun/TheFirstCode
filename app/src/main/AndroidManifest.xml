@@ -18,15 +18,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld"
         tools:targetApi="25">
-
         <activity
-            android:label="ProviderCallerActivity"
-            android:name="com.android.chapter07.ProviderCallerActivity"
+            android:name="com.android.chapter08.NotificationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.android.chapter08.WorkerActivity"/>
+        <activity
+            android:name="com.android.chapter07.ProviderCallerActivity"
+            android:exported="true"
+            android:label="ProviderCallerActivity">
         </activity>
 
         <receiver
@@ -45,6 +49,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name="com.android.chapter04.NewsContentActivity"
             android:exported="true" />
@@ -87,7 +92,7 @@
             android:name="com.android.chapter02.FirstActivity"
             android:exported="true"
             android:label="First Activity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>
