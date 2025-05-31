@@ -9,6 +9,7 @@ import com.android.main.R;
 import com.android.util.ToastUtil;
 
 import org.litepal.LitePal;
+import org.litepal.crud.DataSupport;
 
 public class LitepalActivity extends AppCompatActivity {
 
@@ -43,6 +44,11 @@ public class LitepalActivity extends AppCompatActivity {
             book.setToDefault("pages");
             book.updateAll();
             ToastUtil.shortInfo(this, "Update data succeed");
+        });
+        Button deleteBtn = (Button) findViewById(R.id.delete_database);
+        deleteBtn.setOnClickListener(v -> {
+            DataSupport.deleteAll(Book.class, "price < ?", "15");
+            ToastUtil.shortInfo(this, "Delete data succeed");
         });
     }
 }
