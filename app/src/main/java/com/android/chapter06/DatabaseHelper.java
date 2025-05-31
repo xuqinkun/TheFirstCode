@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "onCreate: " + getClass().getSimpleName());
         db.execSQL(CREATE_BOOK);
         db.execSQL(CREATE_CATEGORY);
-        ToastUtil.shortInfo(context, "Create table succeed");
+        ToastUtil.showShortInfo(context, "Create table succeed");
     }
 
     @Override

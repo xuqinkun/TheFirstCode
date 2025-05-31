@@ -47,7 +47,7 @@ public class RuntimePermissionActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 call();
             } else {
-                ToastUtil.shortInfo(this, "You denied the permission");
+                ToastUtil.showShortInfo(this, "You denied the permission");
             }
         }
     }

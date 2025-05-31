@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(saveData)) {
             editText.setText(saveData);
             editText.setSelection(saveData.length());
-            ToastUtil.shortInfo(this, "Load data succeed");
+            ToastUtil.showShortInfo(this, "Load data succeed");
         }
     }
 

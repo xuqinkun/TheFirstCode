@@ -65,7 +65,7 @@ public class ContactsActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PERMISSION_GRANTED) {
                 readContacts();
             } else {
-                ToastUtil.shortInfo(this, "You denied the permission");
+                ToastUtil.showShortInfo(this, "You denied the permission");
             }
         }
     }

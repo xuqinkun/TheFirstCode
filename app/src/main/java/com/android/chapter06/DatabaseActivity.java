@@ -43,7 +43,7 @@ public class DatabaseActivity extends AppCompatActivity {
             values.put("pages", 510);
             values.put("price", 19.95);
             db.insert("Book", null, values); // 插入第二条数据
-            ToastUtil.shortInfo(this, "Add data succeed");
+            ToastUtil.showShortInfo(this, "Add data succeed");
         });
 
         Button updateBtn = (Button) findViewById(R.id.update_database);
@@ -52,13 +52,13 @@ public class DatabaseActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put("price", 10.99);
             db.update("Book", values, "name = ?", new String[]{"The Da Vinci Code"});
-            ToastUtil.shortInfo(this, "Update data succeed");
+            ToastUtil.showShortInfo(this, "Update data succeed");
         });
         Button deleteBtn = (Button) findViewById(R.id.delete_database);
         deleteBtn.setOnClickListener(v -> {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             db.delete("Book", "pages > ?", new String[]{"500"});
-            ToastUtil.shortInfo(this, "Delete data succeed");
+            ToastUtil.showShortInfo(this, "Delete data succeed");
         });
         Button queryBtn = (Button) findViewById(R.id.query_database);
         queryBtn.setOnClickListener(v -> {
