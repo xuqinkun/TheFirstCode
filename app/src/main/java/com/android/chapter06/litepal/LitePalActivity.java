@@ -3,6 +3,7 @@ package com.android.chapter06.litepal;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 
 import com.android.main.R;
@@ -11,7 +12,10 @@ import com.android.util.ToastUtil;
 import org.litepal.LitePal;
 import org.litepal.crud.DataSupport;
 
-public class LitepalActivity extends AppCompatActivity {
+import java.util.List;
+
+public class LitePalActivity extends AppCompatActivity {
+    private static final String TAG = "LitePalActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +53,18 @@ public class LitepalActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(v -> {
             DataSupport.deleteAll(Book.class, "price < ?", "15");
             ToastUtil.shortInfo(this, "Delete data succeed");
+        });
+        Button queryBtn = (Button) findViewById(R.id.query_database);
+        queryBtn.setOnClickListener(v -> {
+            List<Book> books = DataSupport.findAll(Book.class);
+            for (Book book : books) {
+                Log.d(TAG, "Book name is: " + book.getName());
+                Log.d(TAG, "Book author is: " + book.getAuthor());
+                Log.d(TAG, "Book pages is: " + book.getPages());
+                Log.d(TAG, "Book price is: " + book.getPrice());
+                Log.d(TAG, "Book press is: " + book.getPress());
+            }
+            ToastUtil.shortInfo(this, "Query data succeed");
         });
     }
 }

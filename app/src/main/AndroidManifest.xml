@@ -19,7 +19,7 @@
 
         <activity
             android:label="Litepal"
-            android:name="com.android.chapter06.litepal.LitepalActivity"
+            android:name="com.android.chapter06.litepal.LitePalActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -149,3 +149,38 @@ standard是活动默认的启动模式，在不进行显式指定的情况下，
 ❑ 可以明确地知道正在发送的广播不会离开我们的程序，因此不必担心机密数据泄漏。\
 ❑ 其他的程序无法将广播发送到我们程序的内部，因此不需要担心会有安全漏洞的隐患。\
 ❑ 发送本地广播比发送系统全局广播将会更加高效。
+
+# 第6章 数据持久化
+## 6.1 使用LitePal操作数据库
+查询Book表中的第一条数据:
+```java
+Book firstBook = DataSupport.findFirst(Book.class);
+```
+查询Book表中的最后一条数据:
+```java
+Book lastBook = DataSupport.findLast(Book.class);
+```
+查询Book表中的所有数据:
+```java
+List<Book> books = DataSupport.findAll(Book.class);
+```
+通过连缀查询来定制更多的查询功能
+❑ select()方法用于指定查询哪几列的数据，对应了SQL当中的select关键字。比如只查name和author这两列的数据，就可以这样写：
+```java
+List<Book> books = DataSupport.select("name", "author").find(Book.class);
+```
+❑ where()方法用于指定查询的约束条件，对应了SQL当中的where关键字。比如只查页数大于400的数据，就可以这样写：
+```java
+List<Book> books = DataSupport.where("pages > ? ", "400").find(Book.class);
+```
+❑ order()方法用于指定结果的排序方式，对应了SQL当中的order by 关键字。比如将查询结果按照书价从高到低排序，就可以这样写：
+```java
+List<Book> books = DataSupport.order("price desc").find(Book.class);
+```
+其中desc表示降序排列，asc或者不写表示升序排列。
+❑ limit()方法用于指定查询结果的数量，比如只查表中的前3条数据，
+就可以这样写：List<Book> books =DataSupport.limit(3).find(Book.class);\
+❑ offset()方法用于指定查询结果的偏移量，比如查询表中的第2条、第3条、第4条数据，就可以这样写：
+```java
+List<Book> books = DataSupport.limit(3).offset(1).find(Book.class);
+```
