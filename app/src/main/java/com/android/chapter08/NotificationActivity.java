@@ -5,16 +5,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.widget.Button;
 
 import com.android.main.R;
-
-import java.io.File;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -30,11 +26,18 @@ public class NotificationActivity extends AppCompatActivity {
                     PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
                     NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                     Notification notification = new NotificationCompat.Builder(this).setContentTitle("Title")
-                            .setContentText("This is content text")
+                            // 长文本显示
+                            // .setStyle(new android.support.v4.app.NotificationCompat.
+                            //         BigTextStyle().bigText("Learn how to build notifications, send and sync data, and use " +
+                            //         "voice actions. Get the official Android IDE and developer tools to build apps for Android."))
+                            // 显示图片
+                            .setStyle(new android.support.v4.app.NotificationCompat.BigPictureStyle()
+                                    .bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.apple_pic)))
                             .setWhen(System.currentTimeMillis())
                             .setSmallIcon(R.mipmap.ic_launcher)
                             .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                             .setContentIntent(pi)
+                            .setPriority(NotificationCompat.PRIORITY_MAX)
                             // .setSound(Uri.fromFile(new File("/system/media/audio/ringtones/Candy.ogg")))
                             // .setAutoCancel(true) // 点击后自动取消通知
                             // .setVibrate(new long[]{0,1000,1000,1000}) // 震动
