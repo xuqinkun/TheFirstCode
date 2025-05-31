@@ -5,12 +5,16 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.widget.Button;
 
 import com.android.main.R;
+
+import java.io.File;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -31,7 +35,11 @@ public class NotificationActivity extends AppCompatActivity {
                             .setSmallIcon(R.mipmap.ic_launcher)
                             .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                             .setContentIntent(pi)
+                            // .setSound(Uri.fromFile(new File("/system/media/audio/ringtones/Candy.ogg")))
                             // .setAutoCancel(true) // 点击后自动取消通知
+                            // .setVibrate(new long[]{0,1000,1000,1000}) // 震动
+                            // .setLights(Color.GREEN, 1000, 1000) // 灯光
+                            .setDefaults(NotificationCompat.DEFAULT_ALL)
                             .build();
                     manager.notify(1, notification);
                     break;
