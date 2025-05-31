@@ -19,3 +19,4 @@ rootProject.name = "TheFirstCode"
 include ':app'
 include ':broadcastreceiver'
 include ':BroadcastBestPractice'
+include ':ContentProvider'

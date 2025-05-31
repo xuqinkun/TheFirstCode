@@ -20,8 +20,8 @@
         tools:targetApi="25">
 
         <activity
-            android:label="Chapter07"
-            android:name="com.android.chapter07.ContactsActivity"
+            android:label="ProviderCallerActivity"
+            android:name="com.android.chapter07.ProviderCallerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
