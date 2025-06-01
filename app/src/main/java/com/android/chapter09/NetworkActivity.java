@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.main.R;
+import com.android.util.HttpUtil;
+import com.android.util.ToastUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -19,22 +21,17 @@ import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.IOException;
 import java.io.StringReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 
 import javax.xml.parsers.SAXParserFactory;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 
 public class NetworkActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final int CONNECT_TIMEOUT = 8000;
-    public static final int READ_TIMEOUT = 8000;
     private TextView responseText;
 
     private static final String TAG = "NetworkActivity";
@@ -50,35 +47,19 @@ public class NetworkActivity extends AppCompatActivity implements View.OnClickLi
 
     private void sendRequestWithHttpURLConnection() {
         new Thread(() -> {
-            HttpURLConnection connection = null;
-            BufferedReader reader = null;
-            try {
-                URL url = new URL("https://www.baidu.com");
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setConnectTimeout(CONNECT_TIMEOUT);
-                connection.setReadTimeout(READ_TIMEOUT);
-                reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
+            String url = "https://www.baidu.com";
+            HttpUtil.sendHttpRequest(url, new HttpCallbackListener() {
+                @Override
+                public void onFinish(String response) {
+                    showResponse(response);
                 }
-                showResponse(response.toString());
-            } catch (Exception e) {
-                Log.d(TAG, "Send request error: ", e);
-            } finally {
-                if (reader != null) {
-                    try {
-                        reader.close();
-                    } catch (Exception e) {
-                        Log.d(TAG, "Close reader error: ", e);
-                    }
+
+                @Override
+                public void onError(Exception e) {
+                    Log.e(TAG, "onError: " + e.getMessage());
+                    runOnUiThread(() -> ToastUtil.showShortInfo(NetworkActivity.this, "Error request:" + url));
                 }
-                if (connection != null) {
-                    connection.disconnect();
-                }
-            }
+            });
         }).start();
 
     }
@@ -90,31 +71,31 @@ public class NetworkActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.send_request) {
+            // sendRequestWithHttpURLConnection();
             sendRequestWithOkHttp();
         }
     }
 
     private void sendRequestWithOkHttp() {
         Log.d(TAG, "sendRequestWithOkHttp");
-        new Thread(() -> {
-            try {
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder().url("http://192.168.31.246:88/get_data.json").build();
-                Response response = client.newCall(request).execute();
-                String data = response.body().string();
-                // parseXMLWithSAX(data);
-                // parseJSONWithJSONObject(data);
-                parseJSONWithGson(data);
-            } catch (Exception e) {
+        HttpUtil.sendHttpRequestWithOkHttp("http://192.168.31.246:88/get_data.json", new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
                 Log.d(TAG, "sendRequest Error: ", e);
             }
-        }).start();
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String data = response.body().string();
+                showResponse(data);
+                parseJSONWithGson(data);
+            }
+        });
     }
 
     private void parseJSONWithGson(String data) {
         Gson gson = new Gson();
-        List<App> appList = gson.fromJson(data, new TypeToken<List<App>>() {
-        }.getType());
+        List<App> appList = gson.fromJson(data, new TypeToken<List<App>>() {}.getType());
         for (App app : appList) {
             Log.d(TAG + ":gson", "id is " + app.getId());
             Log.d(TAG + ":gson", "name is " + app.getName());
