@@ -10,8 +10,9 @@ import android.widget.TextView;
 
 import com.android.main.R;
 
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
@@ -19,6 +20,8 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import javax.xml.parsers.SAXParserFactory;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -94,11 +97,23 @@ public class NetworkActivity extends AppCompatActivity implements View.OnClickLi
                 Request request = new Request.Builder().url("http://192.168.31.246:88/get_data.xml").build();
                 Response response = client.newCall(request).execute();
                 String data = response.body().string();
-                parseXMLWithPull(data);
+                parseXMLWithSAX(data);
             } catch (Exception e) {
                 Log.d(TAG, "sendRequest Error: ", e);
             }
         }).start();
+    }
+
+    private void parseXMLWithSAX(String data) {
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            XMLReader xmlReader = factory.newSAXParser().getXMLReader();
+            XMLHandler handler = new XMLHandler();
+            xmlReader.setContentHandler(handler);
+            xmlReader.parse(new InputSource(new StringReader(data)));
+        } catch (Exception e) {
+            Log.d(TAG, "Error parseXMLWithSAX: ", e);
+        }
     }
 
     private void parseXMLWithPull(String data) {
