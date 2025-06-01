@@ -9,7 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.main.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
@@ -20,6 +24,7 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 import javax.xml.parsers.SAXParserFactory;
 
@@ -94,14 +99,44 @@ public class NetworkActivity extends AppCompatActivity implements View.OnClickLi
         new Thread(() -> {
             try {
                 OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder().url("http://192.168.31.246:88/get_data.xml").build();
+                Request request = new Request.Builder().url("http://192.168.31.246:88/get_data.json").build();
                 Response response = client.newCall(request).execute();
                 String data = response.body().string();
-                parseXMLWithSAX(data);
+                // parseXMLWithSAX(data);
+                // parseJSONWithJSONObject(data);
+                parseJSONWithGson(data);
             } catch (Exception e) {
                 Log.d(TAG, "sendRequest Error: ", e);
             }
         }).start();
+    }
+
+    private void parseJSONWithGson(String data) {
+        Gson gson = new Gson();
+        List<App> appList = gson.fromJson(data, new TypeToken<List<App>>() {
+        }.getType());
+        for (App app : appList) {
+            Log.d(TAG + ":gson", "id is " + app.getId());
+            Log.d(TAG + ":gson", "name is " + app.getName());
+            Log.d(TAG + ":gson", "version is " + app.getVersion());
+        }
+    }
+
+    private void parseJSONWithJSONObject(String data) {
+        try {
+            JSONArray jsonArray = new JSONArray(data);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String id = jsonObject.getString("id");
+                String name = jsonObject.getString("name");
+                String version = jsonObject.getString("version");
+                Log.d(TAG, "id is " + id);
+                Log.d(TAG, "name is " + name);
+                Log.d(TAG, "version is " + version);
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error parseJSONWithJSONObject: ", e);
+        }
     }
 
     private void parseXMLWithSAX(String data) {
