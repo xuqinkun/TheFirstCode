@@ -10,8 +10,13 @@ import android.widget.TextView;
 
 import com.android.main.R;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -83,17 +88,55 @@ public class NetworkActivity extends AppCompatActivity implements View.OnClickLi
 
     private void sendRequestWithOkHttp() {
         Log.d(TAG, "sendRequestWithOkHttp");
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder().url("https://www.baidu.com").build();
+                Request request = new Request.Builder().url("http://192.168.31.246:88/get_data.xml").build();
                 Response response = client.newCall(request).execute();
                 String data = response.body().string();
-                showResponse(data);
+                parseXMLWithPull(data);
             } catch (Exception e) {
                 Log.d(TAG, "sendRequest Error: ", e);
             }
         }).start();
+    }
+
+    private void parseXMLWithPull(String data) {
+        try {
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParser xmlPullParser = factory.newPullParser();
+            xmlPullParser.setInput(new StringReader(data));
+            int eventType = xmlPullParser.getEventType();
+            String id = "";
+            String name = "";
+            String version = "";
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                String nodeName = xmlPullParser.getName();
+                switch (eventType) {
+                    case XmlPullParser.START_TAG:
+                        if ("id" .equals(nodeName)) {
+                            id = xmlPullParser.nextText();
+                        } else if ("name" .equals(nodeName)) {
+                            name = xmlPullParser.nextText();
+                        } else if ("version" .equals(nodeName)) {
+                            version = xmlPullParser.nextText();
+                        }
+                        break;
+                    case XmlPullParser.END_TAG:
+                        if ("app" .equals(nodeName)) {
+                            Log.d(TAG, "id is " + id);
+                            Log.d(TAG, "name is " + name);
+                            Log.d(TAG, "version is " + version);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                eventType = xmlPullParser.next();
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "parseXMLWithPull: ", e);
+        }
     }
 
 
