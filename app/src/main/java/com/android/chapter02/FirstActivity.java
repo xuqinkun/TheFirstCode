@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 import com.android.main.R;
+import com.android.util.ToastUtil;
 
 public class FirstActivity extends BaseActivity {
     private static final String TAG = "FirstActivity";
@@ -36,7 +37,7 @@ public class FirstActivity extends BaseActivity {
         if (item.getItemId() == R.id.add_item) {
             Toast.makeText(FirstActivity.this, "You clicked add item", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.remove_item) {
-            Toast.makeText(FirstActivity.this, "You clicked remove item", Toast.LENGTH_SHORT).show();
+            ToastUtil.showLongInfo(this, "You clicked remove item");
         }
         return true;
     }

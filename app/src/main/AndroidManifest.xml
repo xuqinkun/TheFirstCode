@@ -29,7 +29,7 @@
                 android:resource="@xml/file_paths"/>
         </provider>
         <activity
-            android:name="com.android.chapter08.MediaPlayerActivity"
+            android:name="com.android.chapter08.VideoPlayerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
