@@ -15,6 +15,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class NetworkActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int CONNECT_TIMEOUT = 8000;
     public static final int READ_TIMEOUT = 8000;
@@ -73,7 +77,24 @@ public class NetworkActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.send_request) {
-            sendRequestWithHttpURLConnection();
+            sendRequestWithOkHttp();
         }
     }
+
+    private void sendRequestWithOkHttp() {
+        Log.d(TAG, "sendRequestWithOkHttp");
+        new Thread(()->{
+            try {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder().url("https://www.baidu.com").build();
+                Response response = client.newCall(request).execute();
+                String data = response.body().string();
+                showResponse(data);
+            } catch (Exception e) {
+                Log.d(TAG, "sendRequest Error: ", e);
+            }
+        }).start();
+    }
+
+
 }
