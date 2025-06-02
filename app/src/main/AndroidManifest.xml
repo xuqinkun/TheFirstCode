@@ -30,7 +30,7 @@
                 android:resource="@xml/file_paths"/>
         </provider>
         <activity
-            android:name="com.android.chapter09.NetworkActivity"
+            android:name="com.android.chapter10.GuiRefreshActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
