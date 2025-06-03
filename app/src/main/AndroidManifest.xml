@@ -29,8 +29,11 @@
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+        <service android:name="com.android.chapter10.FirstService"
+            android:exported="true"
+            android:enabled="true"/>
         <activity
-            android:name="com.android.chapter10.GuiRefreshActivity"
+            android:name="com.android.chapter10.ServiceControlActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
