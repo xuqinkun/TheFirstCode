@@ -15,13 +15,13 @@ import com.android.main.R;
 public class ServiceControlActivity extends AppCompatActivity {
     private static final String TAG = "ServiceControlActivity";
 
-    private FirstService.DownloadBinder downloadBinder;
+    private ForegroundService.DownloadBinder downloadBinder;
 
     private final ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "onServiceConnected");
-            downloadBinder = (FirstService.DownloadBinder) service;
+            downloadBinder = (ForegroundService.DownloadBinder) service;
             downloadBinder.startDownload();
             downloadBinder.getProgress();
         }
@@ -43,13 +43,13 @@ public class ServiceControlActivity extends AppCompatActivity {
         Button bindService = (Button) findViewById(R.id.bind_service);
         Button unbindService = (Button) findViewById(R.id.unbind_service);
         startService.setOnClickListener(v -> {
-            startService(new Intent(this, FirstService.class));
+            startService(new Intent(this, ForegroundService.class));
         });
         stopService.setOnClickListener(v -> {
-            stopService(new Intent(this, FirstService.class));
+            stopService(new Intent(this, ForegroundService.class));
         });
         bindService.setOnClickListener(v -> {
-            Intent intent = new Intent(this, FirstService.class);
+            Intent intent = new Intent(this, ForegroundService.class);
             isBound = bindService(intent, connection, BIND_AUTO_CREATE);
             Log.d(TAG, "bindService: isBound=" + isBound);
         });
