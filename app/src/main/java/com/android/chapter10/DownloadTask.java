@@ -48,7 +48,8 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();
             file = new File(path + filename);
             if (file.exists()) {
-                downloadedLength = file.length();
+                file.delete();
+                downloadedLength = 0;
             }
             long contentLength = getContentLength(url);
             if (contentLength == 0) {
@@ -66,7 +67,7 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
                 is = response.body().byteStream();
                 savedFile = new RandomAccessFile(file, "rw");
                 savedFile.seek(downloadedLength);
-                byte[] buffer = new byte[1024];
+                byte[] buffer = new byte[1024*1024];
                 int total = 0;
                 int len;
                 while ((len = is.read(buffer)) != -1) {
@@ -79,7 +80,10 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
                     else {
                         total += len;
                         savedFile.write(buffer, 0, len);
-                        int progress = (int) ((total+downloadedLength) / contentLength);
+                        int progress = (int) ((total+downloadedLength) * 100 / contentLength);
+                        if (progress != 0 && progress % 5 == 0) {
+                            Log.d(TAG, "doInBackground: progress=" + progress);
+                        }
                         publishProgress(progress);
                     }
                 }

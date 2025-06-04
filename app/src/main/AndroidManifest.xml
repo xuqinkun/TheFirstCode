@@ -32,6 +32,9 @@
         <service android:name="com.android.chapter10.FirstService"
             android:exported="true"
             android:enabled="true"/>
+        <service android:name="com.android.chapter10.DownloadService"
+            android:exported="true"
+            android:enabled="true"/>
         <service android:name="com.android.chapter10.ForegroundService"
             android:exported="true"
             android:enabled="true"/>
@@ -39,7 +42,7 @@
             android:exported="true"
             android:enabled="true"/>
         <activity
-            android:name="com.android.chapter10.ServiceControlActivity"
+            android:name="com.android.chapter10.DownloadActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
