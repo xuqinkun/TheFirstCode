@@ -26,13 +26,14 @@ public class FirstService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        Log.d(TAG, "onBind");
         return binder;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG, "onCreate");
+        Log.d(TAG, "onCreate：" + this);
     }
 
     @Override

@@ -32,6 +32,8 @@ public class ServiceControlActivity extends AppCompatActivity {
         }
     };
 
+    private boolean isBound;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +50,15 @@ public class ServiceControlActivity extends AppCompatActivity {
         });
         bindService.setOnClickListener(v -> {
             Intent intent = new Intent(this, FirstService.class);
-            bindService(intent, connection, BIND_AUTO_CREATE);
+            isBound = bindService(intent, connection, BIND_AUTO_CREATE);
+            Log.d(TAG, "bindService: isBound=" + isBound);
         });
         unbindService.setOnClickListener(v -> {
-            unbindService(connection);
+            Log.d(TAG, "unbindService: isBound=" + isBound);
+            if (isBound) {
+                unbindService(connection);
+                isBound = false;
+            }
         });
     }
 }
