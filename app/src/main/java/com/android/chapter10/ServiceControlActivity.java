@@ -42,6 +42,7 @@ public class ServiceControlActivity extends AppCompatActivity {
         Button stopService = (Button) findViewById(R.id.stop_service);
         Button bindService = (Button) findViewById(R.id.bind_service);
         Button unbindService = (Button) findViewById(R.id.unbind_service);
+        Button startIntentService = (Button) findViewById(R.id.start_intent_service);
         startService.setOnClickListener(v -> {
             startService(new Intent(this, ForegroundService.class));
         });
@@ -59,6 +60,11 @@ public class ServiceControlActivity extends AppCompatActivity {
                 unbindService(connection);
                 isBound = false;
             }
+        });
+        startIntentService.setOnClickListener(v -> {
+            Log.d(TAG, "Main thread is " + Thread.currentThread().getId());
+            Intent intent = new Intent(this, MyIntentService.class);
+            startService(intent);
         });
     }
 }
