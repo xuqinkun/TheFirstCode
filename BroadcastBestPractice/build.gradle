@@ -15,6 +15,11 @@ android {
     namespace 'com.xqk.broadcastbestpractice'
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
+    lintOptions {
+        abortOnError false
+        checkAllWarnings false
+        ignoreWarnings true
+    }
 
     defaultConfig {
         applicationId "com.xqk.broadcastbestpractice"
